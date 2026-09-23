@@ -35,7 +35,7 @@ PedidoService
 ExampleDS
     |
     v
-H2
+   H2
 ```
 
 La JSP actúa como vista:
