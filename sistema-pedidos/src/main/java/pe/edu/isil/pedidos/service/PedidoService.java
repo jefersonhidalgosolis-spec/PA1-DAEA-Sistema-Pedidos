@@ -51,6 +51,105 @@ public class PedidoService {
   }
 
   /**
+   * Buscar ID de un producto.
+   * @param Id ID del producto que se desea identificar.
+   * @return el ID del producto. 
+  */
+  @TransactionAttribute(TransactionAttributeType.SUPPORTS)
+  public Pedido buscarPorId(Long id) {
+    if (id == null) {
+      return null;
+    }
+    return entityManager.find(Pedido.class, id);
+  }
+
+  /**
+   * Actualizar un pedido en el sistema.
+   *
+   * @param cliente    Nombre del cliente que realiza el pedido.
+   * @param Id ID del producto que se desea comprar.
+   * @param nuevoProductoId   Nuevo producto a comprar.
+   * @param nuevaCantidad   Nueva cantidad de productos a comprar.
+   * @return El pedido actualizado.
+   * @throws IllegalArgumentException Si alguno de los parámetros es inválido o si el producto no existe.
+   */
+  @TransactionAttribute(TransactionAttributeType.REQUIRED)
+  public Pedido actualizarPedido(Long id, String cliente, Long nuevoProductoId, int nuevaCantidad) {
+    if (id == null) {
+      throw new PedidoException("El ID del pedido es obligatorio.");
+    }
+    
+    validarDatos(cliente, nuevoProductoId, nuevaCantidad);
+
+    Pedido pedido = entityManager.find(Pedido.class, id);
+    if (pedido == null) {
+      throw new PedidoException("El pedido con ID " + id + " no existe.");
+    }
+
+    Producto productoAnterior = pedido.getProducto();
+    int cantidadAnterior = pedido.getCantidad();
+
+    try {
+      // REGLA DE NEGOCIO
+      // CASO 1: Mismo producto -> Se calcula la diferencia de cantidad
+      if (productoAnterior.getId().longValue() == nuevoProductoId.longValue()) {
+        int diferencia = nuevaCantidad - cantidadAnterior;
+        if (diferencia > 0) {
+          // Aumentó la cantidad: Se descuenta la diferencia del stock
+          productoAnterior.descontarStock(diferencia);
+        } else if (diferencia < 0) {
+          // Disminuyó la cantidad: Se repone la diferencia al stock
+          productoAnterior.reponerStock(Math.abs(diferencia));
+        }
+        // CASO 2: Cambio de producto -> Reponer al anterior y descontar al nuevo
+      } else {
+        Producto nuevoProducto = entityManager.find(Producto.class, nuevoProductoId);
+        if (nuevoProducto == null) {
+          throw new PedidoException("El nuevo producto seleccionado no existe.");
+        }
+
+        // Reponer stock al producto original
+        productoAnterior.reponerStock(cantidadAnterior);
+
+        // Descontar stock al nuevo producto
+        nuevoProducto.descontarStock(nuevaCantidad); 
+
+        // Asignar el nuevo producto al pedido
+        pedido.setProducto(nuevoProducto);
+      }
+    } catch (IllegalArgumentException | IllegalStateException e) {
+      throw new PedidoException(e.getMessage());
+    }
+    //
+    BigDecimal nuevoTotal = pedido.getProducto().getPrecio().multiply(BigDecimal.valueOf(nuevaCantidad));
+    pedido.setCliente(cliente.trim());
+    pedido.setCantidad(nuevaCantidad);
+    pedido.setTotal(nuevoTotal);
+
+    return pedido;
+  }
+
+  // Eliminar un pedido y repone el stock del producto asociado
+  @TransactionAttribute(TransactionAttributeType.REQUIRED)
+  public void eliminarPedido(Long id) {
+    if (id == null) {
+      throw new PedidoException("El ID del pedido es obligatorio.");
+    }
+
+    Pedido pedido = entityManager.find(Pedido.class, id);
+    if (pedido == null) {
+      throw new PedidoException("El pedido con ID " + id + " no existe.");
+    }
+
+    // Reponer stock antes de eliminar
+    Producto producto = pedido.getProducto();
+    producto.reponerStock(pedido.getCantidad());
+
+    // Eliminar la entidad
+    entityManager.remove(pedido);
+  }
+
+  /**
    * Lista todos los productos disponibles en el sistema.
    *
    * @return Lista de productos.
@@ -77,6 +176,7 @@ public class PedidoService {
    */
   @TransactionAttribute(TransactionAttributeType.SUPPORTS)
   public List<Pedido> listarPedidos() {
+    entityManager.clear();
     return entityManager
         .createQuery(
             """

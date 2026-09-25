@@ -32,6 +32,22 @@ public class PedidoServlet
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    // Verificamos si se solicitó editar un pedido para cargar sus datos en el formulario
+    String action = request.getParameter("action");
+    if ("editar".equalsIgnoreCase(action)) {
+      try {
+        Long id = Long.valueOf(request.getParameter("id"));
+        Pedido pedidoEditar = pedidoService.buscarPorId(id);
+        if (pedidoEditar != null) {
+          request.setAttribute("pedidoEditar", pedidoEditar);
+        } else {
+          request.setAttribute("error", "El ID del pedido no existe.");
+        }
+      } catch (NumberFormatException e) {
+        request.setAttribute("error", "ID de pedido inválido.");
+      }
+    }
+
     cargarDatosVista(request);
     request.getRequestDispatcher("/WEB-INF/views/pedidos.jsp")
         .forward(request, response);
@@ -49,7 +65,49 @@ public class PedidoServlet
       throws ServletException, IOException {
     request.setCharacterEncoding(StandardCharsets.UTF_8.name());
 
+    // Leemos el parámetro de acción enviado por el formulario
+    String action = request.getParameter("action");
+    if (action == null || action.trim().isEmpty()) {
+      action = "registrar";
+    }
+
     try {
+// Evaluación de la acción mediante un switch
+      switch (action.toLowerCase()) {
+        case "registrar":
+          Registrar(request, response);
+          break;
+
+        case "actualizar":
+          Actualizar(request, response);
+          break;
+
+        case "eliminar":
+          Eliminar(request, response);
+          break;
+
+        default:
+          mostrarErrorNegocio(request, response, "Acción no válida solicitada.");
+          break;
+          }
+    } catch (NumberFormatException e) {
+      mostrarErrorNegocio(request, response, "Producto o cantidad inválidos.");
+    } catch (PedidoException e) {
+      mostrarErrorNegocio(request, response, e.getMessage());
+    } catch (RuntimeException e) {
+      mostrarErrorGeneral(request, response);
+    }
+  }
+
+  /**
+   * Carga los datos necesarios para la vista de Registrar.
+   * @param request  Objeto HttpServletRequest que contiene la solicitud del cliente.
+   * @param response Objeto HttpServletResponse que contiene la respuesta al cliente.
+   * @throws ServletException Si ocurre un error en el servlet.
+   * @throws IOException      Si ocurre un error de entrada/salida.
+  */
+   private void Registrar(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException, PedidoException {
       String cliente = request.getParameter("cliente");
       Long productoId = Long.valueOf(request.getParameter("productoId"));
       int cantidad = Integer.parseInt(request.getParameter("cantidad"));
@@ -59,14 +117,45 @@ public class PedidoServlet
       // Patrón PRG (Post/Redirect/Get) para evitar reenvíos de formularios
       response.sendRedirect(request.getContextPath() + "/pedidos?creado="
               + pedido.getId());
-    } catch (NumberFormatException e) {
-      mostrarErrorNegocio(request, response, "Producto o cantidad inválidos.");
-    } catch (PedidoException e) {
-      mostrarErrorNegocio(request, response, e.getMessage());
-    } catch (RuntimeException e) {
-      mostrarErrorGeneral(request, response);
     }
-  }
+
+  /**
+   * Carga los datos necesarios para la vista de Actualizar.
+   * @param request  Objeto HttpServletRequest que contiene la solicitud del cliente.
+   * @param response Objeto HttpServletResponse que contiene la respuesta al cliente.
+   * @throws ServletException Si ocurre un error en el servlet.
+   * @throws IOException      Si ocurre un error de entrada/salida.
+   */
+   private void Actualizar(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException, PedidoException {
+    Long id = Long.valueOf(request.getParameter("id"));
+    String cliente = request.getParameter("cliente");
+    Long productoId = Long.valueOf(request.getParameter("productoId"));
+    int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+
+      pedidoService.actualizarPedido(id, cliente, productoId, cantidad);
+
+      // Patrón PRG (Post/Redirect/Get) para evitar reenvíos de formularios
+      response.sendRedirect(request.getContextPath() + "/pedidos?actualizado="
+              + id);
+    }
+
+  /**
+   * Carga los datos necesarios para la vista de Eliminar.
+   * @param request  Objeto HttpServletRequest que contiene la solicitud del cliente.
+   * @param response Objeto HttpServletResponse que contiene la respuesta al cliente.
+   * @throws ServletException Si ocurre un error en el servlet.
+   * @throws IOException      Si ocurre un error de entrada/salida.
+   */
+   private void Eliminar(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException, PedidoException {
+    Long id = Long.valueOf(request.getParameter("id"));
+
+      pedidoService.eliminarPedido(id);
+      // Patrón PRG (Post/Redirect/Get) para evitar reenvíos de formularios
+      response.sendRedirect(request.getContextPath() + "/pedidos?eliminado="
+              + id);
+    }
 
   /**
    * Carga los datos necesarios para la vista de pedidos.

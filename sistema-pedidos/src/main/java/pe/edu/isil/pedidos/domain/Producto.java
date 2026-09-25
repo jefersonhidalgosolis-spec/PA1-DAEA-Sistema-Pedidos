@@ -75,4 +75,13 @@ public class Producto {
     stock -= cantidad;
   }
 
+  // Método para reponer unidades al stock del producto
+  public void reponerStock(int cantidad) {
+    if (cantidad <= 0) {
+      throw new IllegalArgumentException("La cantidad a reponer debe ser mayor que cero.");
+    }
+
+    stock += cantidad;
+  }
+
 }

@@ -89,4 +89,21 @@ public class Pedido {
     return fecha;
   }
 
+  // Setters requeridos para permitir la edición de pedidos<<<
+  public void setCliente(String cliente) {
+    this.cliente = cliente;
+  }
+
+  public void setProducto(Producto producto) {
+    this.producto = producto;
+  }
+
+  public void setCantidad(int cantidad) {
+    this.cantidad = cantidad;
+  }
+
+  public void setTotal(BigDecimal total) {
+    this.total = total;
+  }
+
 }

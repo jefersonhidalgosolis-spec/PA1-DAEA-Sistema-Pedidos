@@ -34,13 +34,38 @@
     </div>
 </c:if>
 
-<h2>Registrar pedido</h2>
+<!-- Mensajes de éxito para actualizar-->
+<c:if test="${not empty param.actualizado}">
+    <div class="mensaje">
+        Pedido #
+        <c:out value="${param.actualizado}"/> 
+        actualizado correctamente.
+    </div>
+</c:if>
+
+<!-- Mensajes de éxito para eliminar-->
+<c:if test="${not empty param.eliminado}">
+    <div class="mensaje">
+        Pedido #
+        <c:out value="${param.eliminado}"/> 
+        eliminado y stock repuesto correctamente.
+    </div>
+</c:if>
+
+<!-- Formulario para Registrar o Editar según si existe 'pedidoEditar' -->
+<h2>${not empty pedidoEditar ? 'Editar pedido' : 'Registrar pedido'}</h2>
 
 <c:url var="pedidosUrl" value="/pedidos"/>
 
 <form method="post"
       action="${pedidosUrl}"
       class="form-grid">
+    
+    <!-- Campos ocultos para controlar la acción y el ID en edición -->
+    <input type="hidden" name="action" value="${not empty pedidoEditar ? 'actualizar' : 'registrar'}">
+    <c:if test="${not empty pedidoEditar}">
+        <input type="hidden" name="id" value="${pedidoEditar.id}">
+    </c:if>  
 
     <label>
         Cliente
@@ -49,13 +74,13 @@
             required
             maxlength="120"
             placeholder="Ej. Ana Torres"
-            value="${clienteIngresado}">
+            value="${not empty pedidoEditar ? pedidoEditar.cliente : clienteIngresado}">
     </label>
     <label>
         Producto
         <select name="productoId" required>
             <c:forEach var="producto" items="${productos}">
-                <option value="${producto.id}">
+                <option value="${producto.id}" ${not empty pedidoEditar && pedidoEditar.producto.id == producto.id ? 'selected' : ''}>
                     <c:out value="${producto.nombre}"/>
                     - S/
                     <fmt:formatNumber
@@ -75,13 +100,17 @@
             name="cantidad"
             type="number"
             min="1"
-            value="${empty cantidadIngresada ? 1 : cantidadIngresada}"
+            value="${not empty pedidoEditar ? pedidoEditar.cantidad : (empty cantidadIngresada ? 1 : cantidadIngresada)}"
             required>
     </label>
 
     <button type="submit">
-        Registrar
+        ${not empty pedidoEditar ? 'Actualizar' : 'Registrar'}
     </button>
+
+    <c:if test="${not empty pedidoEditar}">
+        <a href="${pedidosUrl}" style="margin-left: 10px;">Cancelar</a>
+    </c:if>
 </form>
 
 <h2>Pedidos registrados</h2>
@@ -95,6 +124,8 @@
             <th>Cantidad</th>
             <th>Total</th>
             <th>Fecha</th>
+            <!-- Encabezado para la columna de acciones -->
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -121,6 +152,20 @@
                 </td>
                 <td>
                     <c:out value="${pedido.fecha}"/>
+                </td>
+                <!-- Celdas con botones para Editar y Eliminar -->
+                <td>
+                    <!-- Enlace para cargar datos en el formulario vía GET -->
+                    <a href="${pedidosUrl}?action=editar&id=${pedido.id}">Editar</a>
+
+                    <!-- Formulario para procesar la eliminación vía POST -->
+                    <form action="${pedidosUrl}" method="post" style="display:inline;" onsubmit="return confirm('¿Seguro que deseas eliminar este pedido? El stock será repuesto.');">
+                        <input type="hidden" name="action" value="eliminar">
+                        <input type="hidden" name="id" value="${pedido.id}">
+                        <button type="submit">
+                            Eliminar
+                        </button>
+                    </form>
                 </td>
             </tr>
         </c:forEach>
