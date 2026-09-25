@@ -88,13 +88,13 @@ Para detener WildFly: `Ctrl + C`.
 
 ## Flujo de la aplicación
 
-1. `PedidoServlet#doGet()` consulta productos y pedidos.
+1. `PedidoServlet#doGet()` consulta la lista de productos y pedidos.
 2. El Servlet coloca los datos en el `request`.
 3. Se ejecuta un `forward` hacia `pedidos.jsp`.
 4. La JSP presenta los datos utilizando EL y Jakarta Tags.
-5. El formulario realiza `POST /pedidos`.
-6. `PedidoServlet#doPost()` recibe los parámetros.
-7. `PedidoService` valida las reglas de negocio.
+5. El formulario realiza `POST /pedidos` enviando el campo oculto `action` (registrar, actualizar o eliminar).
+6. `PedidoServlet#doPost()` verifica el valor del parámetro `action` mediante una estructura `switch` para identificar y ejecutar la acción correspondiente.
+7. `PedidoService` valida las reglas de negocio dependiendo del método identificado.
 8. JPA persiste el pedido y actualiza el stock.
 9. Se utiliza el patrón PRG: Post / Redirect / Get.
 
@@ -140,4 +140,3 @@ src/main/webapp/
 
 ## Nota
 - Las JSP se ubican dentro de `WEB-INF/views` para evitar su acceso directo. Se renderizan mediante `forward` desde el Servlet.
-- Esta es la versión base Servlet + JSP + Maven. No incluye todavía la tarea de edición y eliminación de pedidos.
