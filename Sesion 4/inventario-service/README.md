@@ -1,6 +1,6 @@
 # Inventario Service — Jakarta EE 11 + SQL Server Express 2025
 
-Proyecto académico complementario de `sistema-pedidos-jsp` para la Sesión 4: **Integración de aplicativos web con componentes empresariales**.
+Proyecto académico complementario de `sistema-pedidos-jsp` 
 
 ## Stack
 
