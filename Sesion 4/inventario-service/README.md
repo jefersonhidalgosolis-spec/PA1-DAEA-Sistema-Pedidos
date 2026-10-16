@@ -65,9 +65,17 @@ API principal:
 GET  /inventario-service/api/inventario/productos
 GET  /inventario-service/api/inventario/productos/1/stock
 POST /inventario-service/api/inventario/productos/1/reservas
+POST /inventario-service/api/inventario/productos/1/devoluciones
 ```
 
 Body de reserva:
+
+```json
+{
+  "cantidad": 2
+}
+```
+Body de devoluciones:
 
 ```json
 {
