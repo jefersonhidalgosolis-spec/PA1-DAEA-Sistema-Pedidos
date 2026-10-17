@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: pe.edu.isil.inventario.domain.ProductoInventarioTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.055 s -- in pe.edu.isil.inventario.domain.ProductoInventarioTest
