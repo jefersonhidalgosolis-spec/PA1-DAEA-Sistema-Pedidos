@@ -1,0 +1,16 @@
+pe\edu\isil\inventario\api\RestApplication.class
+pe\edu\isil\inventario\dto\DevolverStockResponse.class
+pe\edu\isil\inventario\service\InventarioService.class
+pe\edu\isil\inventario\api\ProductoResource.class
+pe\edu\isil\inventario\dto\ApiError.class
+pe\edu\isil\inventario\api\InventarioExceptionMapper$1.class
+pe\edu\isil\inventario\dto\ReservaStockResponse.class
+pe\edu\isil\inventario\dto\StockResponse.class
+pe\edu\isil\inventario\api\InventarioExceptionMapper.class
+pe\edu\isil\inventario\domain\ProductoInventario.class
+pe\edu\isil\inventario\api\ConstraintViolationExceptionMapper.class
+pe\edu\isil\inventario\dto\ProductoResponse.class
+pe\edu\isil\inventario\service\InventarioException$Tipo.class
+pe\edu\isil\inventario\service\InventarioException.class
+pe\edu\isil\inventario\dto\DevolverStockRequest.class
+pe\edu\isil\inventario\dto\ReservaStockRequest.class

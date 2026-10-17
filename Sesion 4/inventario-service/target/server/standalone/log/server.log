@@ -1,0 +1,212 @@
+2026-10-16 22:08:47,269 INFO  [org.jboss.modules] (main) JBoss Modules version 2.1.6.Final
+2026-10-16 22:08:49,934 INFO  [org.jboss.msc] (main) JBoss MSC version 1.5.6.Final
+2026-10-16 22:08:50,363 INFO  [org.jboss.as] (MSC service thread 1-2) WFLYSRV0049: WildFly 41.0.0.Final (WildFly Core 33.0.0.Final) starting
+2026-10-16 22:08:50,366 DEBUG [org.jboss.as.config] (MSC service thread 1-2) Configured system properties:
+	[Standalone] = 
+	file.encoding = UTF-8
+	file.separator = \
+	java.class.path = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\jboss-modules.jar
+	java.class.version = 65.0
+	java.home = C:\Program Files\Java\jdk-21
+	java.io.tmpdir = C:\Users\Adrian\AppData\Local\Temp\
+	java.library.path = C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft MPI\Bin\;C:\app\Adrian\product\21c\dbhomeXE\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\170\DTS\Binn\;C:\Program Files\GitHub CLI\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\180\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\170\DTS\Binn\;C:\apache-maven-3.9.16\bin;C:\laragon\bin\composer;C:\laragon\bin\git\bin;C:\laragon\bin\git\cmd;C:\laragon\bin\git\mingw64\bin;C:\laragon\bin\git\usr\bin;C:\laragon\bin\mysql\mysql-8.4.3-winx64\bin;C:\laragon\bin\ngrok;C:\laragon\bin\nodejs\node-v22;C:\laragon\bin\php\php-8.3.30-Win32-vs16-x64;C:\laragon\bin\python\python-3.13;C:\laragon\bin\python\python-3.13\Scripts;C:\laragon\usr\bin;C:\Users\Adrian\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\Adrian\AppData\Roaming\Composer\vendor\bin;C:\Users\Adrian\AppData\Roaming\npm;C:\Users\Adrian\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Azure Data Studio\bin;C:\Program Files\MongoDB\Server\8.2\bin;C:\Users\Adrian\AppData\Local\Python\bin;C:\Users\Adrian\.dotnet\tools;c:\Users\Adrian\.vscode\extensions\vscjava.vscode-java-debug-0.60.0\bundled\scripts\noConfigScripts;.
+	java.runtime.name = Java(TM) SE Runtime Environment
+	java.runtime.version = 21.0.7+8-LTS-245
+	java.specification.name = Java Platform API Specification
+	java.specification.vendor = Oracle Corporation
+	java.specification.version = 21
+	java.util.logging.manager = org.jboss.logmanager.LogManager
+	java.vendor = Oracle Corporation
+	java.vendor.url = https://java.oracle.com/
+	java.vendor.url.bug = https://bugreport.java.com/bugreport/
+	java.version = 21.0.7
+	java.version.date = 2025-04-15
+	java.vm.compressedOopsMode = 32-bit
+	java.vm.info = mixed mode, sharing
+	java.vm.name = Java HotSpot(TM) 64-Bit Server VM
+	java.vm.specification.name = Java Virtual Machine Specification
+	java.vm.specification.vendor = Oracle Corporation
+	java.vm.specification.version = 21
+	java.vm.vendor = Oracle Corporation
+	java.vm.version = 21.0.7+8-LTS-245
+	javax.management.builder.initial = org.jboss.as.jmx.PluggableMBeanServerBuilder
+	jboss.home.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server
+	jboss.host.name = desktop-6id37kr
+	jboss.node.name = desktop-6id37kr
+	jboss.qualified.host.name = desktop-6id37kr
+	jboss.server.base.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone
+	jboss.server.config.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration
+	jboss.server.data.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\data
+	jboss.server.log.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\log
+	jboss.server.name = desktop-6id37kr
+	jboss.server.persist.config = true
+	jboss.server.temp.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\tmp
+	jboss.socket.binding.port-offset = 2
+	jboss.threads.eqe.statistics = true
+	jdk.debug = release
+	line.separator = 
+
+	logging.configuration = file:C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration\logging.properties
+	module.path = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\modules
+	native.encoding = Cp1252
+	org.jboss.boot.log.file = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\log\server.log
+	org.jboss.resolver.warning = true
+	org.wildfly.datasources.mssqlserver.connection-url = jdbc:sqlserver://localhost:1433;databaseName=InventarioDB;encrypt=true;trustServerCertificate=true
+	org.wildfly.datasources.mssqlserver.jndi-name = java:jboss/datasources/InventarioDS
+	org.wildfly.datasources.mssqlserver.jta = true
+	org.wildfly.datasources.mssqlserver.max-pool-size = 10
+	org.wildfly.datasources.mssqlserver.min-pool-size = 2
+	org.wildfly.datasources.mssqlserver.password = <redacted>
+	org.wildfly.datasources.mssqlserver.user-name = inventario_app
+	os.arch = amd64
+	os.name = Windows 10
+	os.version = 10.0
+	path.separator = ;
+	stderr.encoding = cp850
+	stdout.encoding = cp850
+	sun.arch.data.model = 64
+	sun.boot.library.path = C:\Program Files\Java\jdk-21\bin
+	sun.cpu.endian = little
+	sun.cpu.isalist = amd64
+	sun.io.unicode.encoding = UnicodeLittle
+	sun.java.command = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\jboss-modules.jar -mp C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\modules org.jboss.as.standalone -P=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\config\database.properties
+	sun.java.launcher = SUN_STANDARD
+	sun.jnu.encoding = Cp1252
+	sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+	sun.os.patch.level = 
+	user.country = ES
+	user.dir = C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service
+	user.home = C:\Users\Adrian
+	user.language = es
+	user.name = Adrian
+	user.script = 
+	user.timezone = America/Lima
+	user.variant = 
+2026-10-16 22:08:50,370 DEBUG [org.jboss.as.config] (MSC service thread 1-2) VM Arguments: -D[Standalone] -Djboss.socket.binding.port-offset=2 --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.reflect=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-modules=java.se --add-exports=java.desktop/sun.awt=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.ldap=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.url.ldap=ALL-UNNAMED --add-exports=java.naming/com.sun.jndi.url.ldaps=ALL-UNNAMED --add-exports=jdk.naming.dns/com.sun.jndi.dns=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.security=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.management/javax.management=ALL-UNNAMED --add-opens=java.naming/javax.naming=ALL-UNNAMED --add-modules=java.se -Djboss.home.dir=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server -Djboss.server.base.dir=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone -Djboss.server.log.dir=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\log -Djboss.server.config.dir=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration -Dorg.jboss.boot.log.file=C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\log\server.log -Dlogging.configuration=file:C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration\logging.properties 
+2026-10-16 22:08:54,161 INFO  [org.wildfly.security] (Controller Boot Thread) ELY00001: WildFly Elytron version 2.9.2.Final
+2026-10-16 22:08:55,330 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 15) WFLYDR0001: Content added at location C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\data\content\2a\5d31d4b847ac8398268adc7795b2e83fe7e2af\content
+2026-10-16 22:08:55,443 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+2026-10-16 22:08:55,555 INFO  [org.xnio] (MSC service thread 1-7) XNIO version 3.8.16.Final
+2026-10-16 22:08:55,665 INFO  [org.xnio.nio] (MSC service thread 1-7) XNIO NIO Implementation Version 3.8.16.Final
+2026-10-16 22:08:55,767 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0027: Starting deployment of "inventario-service.war" (runtime-name: "inventario-service.war")
+2026-10-16 22:08:56,043 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 35) WFLYCLINF0001: Activating Infinispan subsystem.
+2026-10-16 22:08:56,176 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 37) WFLYRS0016: RESTEasy version 7.0.2.Final
+2026-10-16 22:08:56,234 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 28) WFLYJCA0004: Deploying JDBC-compliant driver class com.microsoft.sqlserver.jdbc.SQLServerDriver (version 13.4)
+2026-10-16 22:08:56,356 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-4) WFLYELY00023: KeyStore file 'C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration\application.keystore' does not exist. Used blank.
+2026-10-16 22:08:56,490 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-4) WFLYELY01084: KeyStore C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\configuration\application.keystore not found, it will be auto-generated on first use with a self-signed certificate for host localhost
+2026-10-16 22:08:56,512 INFO  [org.jboss.as.connector] (MSC service thread 1-9) WFLYJCA0009: Starting Jakarta Connectors Subsystem (WildFly/IronJacamar 3.0.21.Final)
+2026-10-16 22:08:56,552 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) WFLYJCA0018: Started Driver service with driver-name = mssqlserver
+2026-10-16 22:08:56,576 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 41) WFLYNAM0001: Activating Naming Subsystem
+2026-10-16 22:08:56,763 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 36) WFLYIO001: Worker 'default' has auto-configured to 8 IO threads with 64 max task threads based on your 4 available processors
+2026-10-16 22:08:56,615 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 44) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
+2026-10-16 22:08:57,237 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 45) WFLYUT0112: The value 'require-host-http11' attribute in the '/subsystem=undertow/server=default-server/http-listener=default' resource is 'false', which will be ignored. The server now always enforces the RFC 9112 requirement that HTTP/1.1 request messages include a Host header.
+2026-10-16 22:08:57,429 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0003: Undertow 2.4.2.Final starting
+2026-10-16 22:08:57,431 INFO  [org.jboss.remoting] (MSC service thread 1-5) JBoss Remoting version 5.0.31.Final
+2026-10-16 22:08:57,500 INFO  [org.jboss.as.naming] (MSC service thread 1-2) WFLYNAM0003: Starting Naming Service
+2026-10-16 22:08:57,550 INFO  [org.jboss.as.ejb3] (MSC service thread 1-5) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 64 (per class), which is derived from thread worker pool sizing.
+2026-10-16 22:08:57,631 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0012: Started server default-server.
+2026-10-16 22:08:57,666 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) Queuing requests.
+2026-10-16 22:08:57,914 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-8) WFLYDS0013: Started FileSystemDeploymentService for directory C:\Users\Adrian\Downloads\isil 2026 agosto\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\PA1-DAEA-Sistema-Pedidos\Sesion 4\inventario-service\target\server\standalone\deployments
+2026-10-16 22:08:57,917 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0006: Undertow HTTP listener default listening on 127.0.0.1:8082
+2026-10-16 22:08:57,905 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0018: Host default-host starting
+2026-10-16 22:08:59,371 INFO  [org.jboss.as.ejb3] (MSC service thread 1-2) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2026-10-16 22:08:59,989 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) WFLYJCA0001: Bound data source [java:jboss/datasources/InventarioDS]
+2026-10-16 22:09:01,866 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 47) ISPN000974: Virtual threads support: unavailable
+2026-10-16 22:09:02,410 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) WFLYJPA0002: Read persistence.xml for InventarioPU
+2026-10-16 22:09:02,569 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 50) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
+2026-10-16 22:09:03,232 INFO  [org.jipijapa] (MSC service thread 1-9) JIPIORMV7020260: Second level cache enabled for inventario-service.war#InventarioPU
+2026-10-16 22:09:03,405 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0003: Processing weld deployment inventario-service.war
+2026-10-16 22:09:03,911 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 49) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
+2026-10-16 22:09:04,809 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-2) HV000001: Hibernate Validator 9.1.1.Final
+2026-10-16 22:09:05,011 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:05,042 INFO  [org.hibernate.orm.jpa] (ServerService Thread Pool -- 50) HHH008540: Processing PersistenceUnitInfo [name: InventarioPU]
+2026-10-16 22:09:05,254 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-2) WFLYEJB0473: JNDI bindings for session bean named 'InventarioService' in deployment unit 'deployment "inventario-service.war"' are as follows:
+
+	java:global/inventario-service/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:app/inventario-service/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:module/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:global/inventario-service/InventarioService
+	java:app/inventario-service/InventarioService
+	java:module/InventarioService
+
+2026-10-16 22:09:05,327 INFO  [org.hibernate.orm.core] (ServerService Thread Pool -- 50) HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-16 22:09:05,501 INFO  [org.hibernate.orm.cache] (ServerService Thread Pool -- 50) HHH90001028: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
+2026-10-16 22:09:05,970 INFO  [org.jipijapa] (MSC service thread 1-8) JIPIORMV7020260: Second level cache enabled for inventario-service.war#InventarioPU
+2026-10-16 22:09:06,212 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900: 6.0.4 (Final)
+2026-10-16 22:09:06,736 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 50) Envers integration enabled? : true
+2026-10-16 22:09:07,719 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:15,544 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 50) HHH10001005: Database info:
+	Database JDBC URL [jdbc:sqlserver://localhost:1433;concatNullYieldsNull=ON;quotedIdentifier=ON;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;vectorTypeSupport=v1;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=InventarioDB;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite;]
+	Database driver: Microsoft JDBC Driver 13.4 for SQL Server
+	Database dialect: SQLServerDialect
+	Database version: 15.0
+	Default catalog/schema: InventarioDB/dbo
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 128
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-16 22:09:30,266 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 54) RESTEASY002225: Deploying jakarta.ws.rs.core.Application: class pe.edu.isil.inventario.api.RestApplication
+2026-10-16 22:09:30,531 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 54) WFLYUT0021: Registered web context: '/inventario-service' for server 'default-server'
+2026-10-16 22:09:30,567 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 29) WFLYSRV0010: Deployed "inventario-service.war" (runtime-name : "inventario-service.war")
+2026-10-16 22:09:30,797 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2026-10-16 22:09:30,833 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9992/management
+2026-10-16 22:09:30,836 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0054: Admin console is not enabled
+2026-10-16 22:09:30,843 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly 41.0.0.Final (WildFly Core 33.0.0.Final) started in 48260ms - Started 389 of 524 services (264 services are lazy, passive or on-demand) - Server configuration file in use: standalone.xml - Minimum feature stability level: community
+2026-10-16 22:09:31,282 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 29) WFLYUT0022: Unregistered web context: '/inventario-service' from server 'default-server'
+2026-10-16 22:09:31,379 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 29) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:31,444 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 29) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:31,565 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment inventario-service.war (runtime-name: inventario-service.war) in 289ms
+2026-10-16 22:09:31,577 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-9) WFLYSRV0027: Starting deployment of "inventario-service.war" (runtime-name: "inventario-service.war")
+2026-10-16 22:09:32,064 INFO  [org.jboss.as.jpa] (MSC service thread 1-9) WFLYJPA0002: Read persistence.xml for InventarioPU
+2026-10-16 22:09:32,167 INFO  [org.jipijapa] (MSC service thread 1-7) JIPIORMV7020260: Second level cache enabled for inventario-service.war#InventarioPU
+2026-10-16 22:09:32,170 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 29) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:32,181 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) WFLYWELD0003: Processing weld deployment inventario-service.war
+2026-10-16 22:09:32,207 INFO  [org.hibernate.orm.jpa] (ServerService Thread Pool -- 29) HHH008540: Processing PersistenceUnitInfo [name: InventarioPU]
+2026-10-16 22:09:32,253 INFO  [org.jboss.as.ejb3.deployment] (MSC service thread 1-2) WFLYEJB0473: JNDI bindings for session bean named 'InventarioService' in deployment unit 'deployment "inventario-service.war"' are as follows:
+
+	java:global/inventario-service/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:app/inventario-service/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:module/InventarioService!pe.edu.isil.inventario.service.InventarioService
+	java:global/inventario-service/InventarioService
+	java:app/inventario-service/InventarioService
+	java:module/InventarioService
+
+2026-10-16 22:09:32,292 INFO  [org.hibernate.orm.cache] (ServerService Thread Pool -- 29) HHH90001028: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
+2026-10-16 22:09:32,337 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 29) Envers integration enabled? : true
+2026-10-16 22:09:32,421 INFO  [org.jipijapa] (MSC service thread 1-6) JIPIORMV7020260: Second level cache enabled for inventario-service.war#InventarioPU
+2026-10-16 22:09:32,513 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 29) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:09:32,620 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 29) HHH10001005: Database info:
+	Database JDBC URL [jdbc:sqlserver://localhost:1433;concatNullYieldsNull=ON;quotedIdentifier=ON;connectRetryInterval=10;connectRetryCount=1;maxResultBuffer=-1;sendTemporalDataTypesAsStringForBulkCopy=true;delayLoadingLobs=true;useFmtOnly=false;vectorTypeSupport=v1;cacheBulkCopyMetadata=false;bulkCopyForBatchInsertAllowEncryptedValueModifications=false;bulkCopyForBatchInsertTableLock=false;bulkCopyForBatchInsertKeepNulls=false;bulkCopyForBatchInsertKeepIdentity=false;bulkCopyForBatchInsertFireTriggers=false;bulkCopyForBatchInsertCheckConstraints=false;bulkCopyForBatchInsertBatchSize=0;useBulkCopyForBatchInsert=false;cancelQueryTimeout=-1;sslProtocol=TLS;calcBigDecimalPrecision=false;useDefaultJaasConfig=false;jaasConfigurationName=SQLJDBCDriver;statementPoolingCacheSize=0;serverPreparedStatementDiscardThreshold=10;enablePrepareOnFirstPreparedStatementCall=false;fips=false;socketTimeout=0;authentication=NotSpecified;authenticationScheme=nativeAuthentication;xopenStates=false;datetimeParameterType=datetime2;sendTimeAsDatetime=true;replication=false;trustStoreType=JKS;trustServerCertificate=true;TransparentNetworkIPResolution=true;iPAddressPreference=IPv4First;serverNameAsACE=false;sendStringParametersAsUnicode=true;selectMethod=direct;responseBuffering=adaptive;queryTimeout=-1;packetSize=8000;multiSubnetFailover=false;loginTimeout=30;lockTimeout=-1;lastUpdateCount=true;useDefaultGSSCredential=false;prepareMethod=prepexec;encrypt=true;disableStatementPooling=true;databaseName=InventarioDB;columnEncryptionSetting=Disabled;applicationName=Microsoft JDBC Driver for SQL Server;applicationIntent=readwrite;]
+	Database driver: Microsoft JDBC Driver 13.4 for SQL Server
+	Database dialect: SQLServerDialect
+	Database version: 15.0
+	Default catalog/schema: InventarioDB/dbo
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 128
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-16 22:09:33,348 INFO  [org.jboss.resteasy.resteasy_jaxrs.i18n] (ServerService Thread Pool -- 15) RESTEASY002225: Deploying jakarta.ws.rs.core.Application: class pe.edu.isil.inventario.api.RestApplication
+2026-10-16 22:09:33,381 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 15) WFLYUT0021: Registered web context: '/inventario-service' for server 'default-server'
+2026-10-16 22:09:34,730 INFO  [org.jboss.as.server] (management-handler-thread - 2) WFLYSRV0016: Replaced deployment "inventario-service.war" with deployment "inventario-service.war"
+2026-10-16 22:22:29,601 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0272: Suspending server
+2026-10-16 22:22:29,612 INFO  [org.jboss.as.ejb3] (Thread-1) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+2026-10-16 22:22:29,632 INFO  [org.jboss.as.txn] (ServerService Thread Pool -- 15) WFLYTX0048: Transactions subsystem: waiting for in-flight transactions to terminate
+2026-10-16 22:22:29,634 INFO  [org.jboss.as.txn] (ServerService Thread Pool -- 15) WFLYTX0049: Transactions subsystem: all in-flight transactions terminated
+2026-10-16 22:22:29,635 INFO  [org.jboss.as.txn] (ServerService Thread Pool -- 15) WFLYTX0046: Transactions subsystem: starting transactions recovery suspension
+2026-10-16 22:22:29,637 INFO  [org.jboss.as.txn] (ServerService Thread Pool -- 15) WFLYTX0047: Transactions subsystem: transactions recovery suspension completed
+2026-10-16 22:22:29,641 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0220: Server shutdown has been requested via an OS signal
+2026-10-16 22:22:29,661 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 15) WFLYUT0022: Unregistered web context: '/inventario-service' from server 'default-server'
+2026-10-16 22:22:29,665 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0008: Undertow HTTP listener default suspending
+2026-10-16 22:22:29,665 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) WFLYUT0019: Host default-host stopping
+2026-10-16 22:22:29,670 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8082
+2026-10-16 22:22:29,678 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0004: Undertow 2.4.2.Final stopping
+2026-10-16 22:22:29,706 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 60) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:22:29,715 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 60) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'inventario-service.war#InventarioPU'
+2026-10-16 22:22:29,718 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0010: Unbound data source [java:jboss/datasources/InventarioDS]
+2026-10-16 22:22:29,771 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0019: Stopped Driver service with driver-name = mssqlserver
+2026-10-16 22:22:29,810 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) WFLYSRV0028: Stopped deployment inventario-service.war (runtime-name: inventario-service.war) in 163ms
+2026-10-16 22:22:29,817 INFO  [org.jboss.as] (MSC service thread 1-2) WFLYSRV0050: WildFly 41.0.0.Final (WildFly Core 33.0.0.Final) stopped in 167ms

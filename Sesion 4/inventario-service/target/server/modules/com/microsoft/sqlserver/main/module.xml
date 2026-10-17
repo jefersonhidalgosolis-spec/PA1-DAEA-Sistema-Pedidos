@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="com.microsoft.sqlserver" xmlns="urn:jboss:module:1.8">
+    <resources>
+        <resource-root path="mssql-jdbc-13.4.0.jre11.jar"/>
+    </resources>
+    <dependencies>
+        <module name="wildflyee.api"/>
+        <module name="jdk.net"/>
+        <module name="jdk.security.jgss"/>
+    </dependencies>
+</module>
