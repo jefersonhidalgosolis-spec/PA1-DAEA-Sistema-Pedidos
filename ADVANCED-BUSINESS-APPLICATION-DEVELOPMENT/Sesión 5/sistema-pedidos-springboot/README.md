@@ -26,6 +26,7 @@ El proyecto conserva una interfaz **Spring MVC + JSP** y expone una **API JSON**
 12. [Limitaciones y siguientes pasos](#12-limitaciones-y-siguientes-pasos)
 13. [Spring JDBC y reportes — Sesión 9](#13-spring-jdbc-y-reportes--sesión-9)
 14. [Referencias técnicas](#14-referencias-técnicas)
+15. [Requerimientos de la PA3](#15-requerimientos-de-la-PA3)
 
 ---
 
@@ -632,3 +633,92 @@ Para ejecutar toda la suite:
 ---
 
 **Uso académico:** curso *Desarrollo de Aplicaciones Empresariales Avanzado* · Continuidad del caso **Sistema de Pedidos** · Sesiones 7 y 9: **Spring MVC, Seguridad con Spring y Spring JDBC**.
+
+## 15.Requerimientos de la PA3 
+
+### Sistema de Gestión de Pedidos - Módulo de Reportes y Supervisión PA3
+
+Aplicación empresarial desarrollada en **Spring Boot** que implementa un módulo avanzado de reportes, consultas de agregación y supervisión de pedidos, utilizando **Spring JDBC** (`NamedParameterJdbcTemplate`) para un rendimiento optimizado y control directo sobre consultas SQL nativas.
+
+### Características Principales
+
+* **Consultas Avanzadas y Agregaciones:** Implementación de consultas SQL con `GROUP BY`, `HAVING` y filtros dinámicos.
+* **Proyecciones con Java Records:** Uso de `records` ubicados en el paquete `repository.projection` para mapear de forma eficiente los resultados complejos.
+* **Manejo Centralizado de Excepciones:** Validaciones de negocio robustas en la capa de servicio que lanzan una excepción personalizada (`PedidoException`).
+* **Seguridad y Control de Roles:** Endpoints protegidos mediante Spring Security con validación de roles (`CONSULTA`, `OPERADOR`) y protección CSRF.
+* **Pruebas Automatizadas:** Cobertura completa con JUnit 5, Mockito (pruebas unitarias) y Spring Boot Test / H2 (pruebas de integración).
+
+### Tecnologías y Versiones
+
+* **Java:** 21[cite: 4]
+* **Spring Boot:** 3.x / 4.1.1[cite: 4]
+* **Acceso a Datos:** Spring JDBC (`NamedParameterJdbcTemplate`), Spring Data JPA / H2 (para pruebas)[cite: 5, 8]
+* **Control de Versiones:** Git & GitHub CLI[cite: 1]
+* **Gestor de Dependencias:** Apache Maven[cite: 1]
+
+### Nuevos Endpoints
+
+El módulo de reportes y supervisión incorpora las siguientes rutas expuestas para la interfaz web (JSP) y servicios REST:
+- **`GET /reportes/pedidos`**: Vista web protegida orientada a la supervisión y aplicación de filtros por cliente y total mínimo, accesible para usuarios con roles de consulta.
+- **`GET /api/reportes/pedidos`**: Endpoint REST que retorna un listado en formato JSON con los pedidos filtrados mediante Spring JDBC utilizando parámetros nombrados.
+- **`GET /api/reportes/clientes-frecuentes`**: Endpoint REST que procesa la agregación por cliente (`GROUP BY` y `HAVING`), devolviendo métricas consolidadas (total de pedidos, unidades y ticket promedio) mapeadas a Java Records.
+
+### Actualización de la Estructura del proyecto
+```text
+
+sistema-pedidos-springboot/
+├── pom.xml
+├── mvnw / mvnw.cmd
+├── README.md
+├── postman/
+│   └── ISIL.postman_collection.json
+└── src/
+    ├── main/
+    │   ├── java/com/isil/edu/pe/spedidos/
+    │   │   ├── client/           # InventarioClient, InventarioRestClient y DTO HTTP
+    │   │   ├── config/           # InventarioHttpConfig y SecurityConfig [S07]
+    │   │   ├── controller/       # HomeController, PedidoController, PedidoApiController y reportes [S09]
+    │   │   │   └── dto/          # DTO HTTP, incluidos reportes [S09]
+    │   │   ├── entity/           # Pedido
+    │   │   ├── exception/        # PedidoException
+    │   │   ├── repository/       # PedidoRepository + repositorio/reportes Spring JDBC [S09]
+    │   │   │   └── projection/   # Proyecciones SQL de reportes [S09]
+    │   │   ├── service/          # PedidoService + PedidoReporteService [S09]
+    │   │   │   ├── dto/          # Modelos de servicio de reportes [S09]
+    │   │   │   └── impl/         # Implementaciones de servicios
+    │   │   └── SistemaPedidosSpringbootApplication.java
+    │   ├── resources/application.properties   # MySQL
+    │   ├── test/resources/application-test.properties # H2 para pruebas
+    │   └── webapp/
+    │       ├── assets/css/app.css
+    │       └── WEB-INF/views/
+    │           ├── pedidos.jsp   # Formulario y logout con CSRF [S07]
+    │           └── error.jsp
+    └── test/java/com/isil/edu/pe/spedidos/
+        ├── SistemaPedidosSpringbootApplicationTests.java
+        ├── controller/
+        │   ├── PedidoApiControllerTest.java        # Contrato JSON; standalone
+        │   ├── PedidoSecurityIntegrationTest.java # Seguridad MVC; filtros [S07]
+        │   └── PedidoReporteControllerIntegrationTest.java # REST/HATEOAS + seguridad + H2 [S09]
+        ├── repository/PedidoReporteJdbcRepositoryTest.java # Integración Spring JDBC/H2 [S09]
+        └── service/impl/PedidoServiceImplTest.java
+
+```
+
+### Tipos de pruebas
+
+La suite de pruebas automatizadas garantiza la cobertura y estabilidad de los nuevos componentes incorporados en la PA3:
+1. **Pruebas Unitarias de Repositorio (`PedidoReporteJdbcRepositoryTest`)**: Validaciones de integración sobre H2 para verificar el correcto funcionamiento de las consultas nativas con `NamedParameterJdbcTemplate`, asegurando la precisión de los mapeos y agregaciones SQL.
+2. **Pruebas Unitarias de Servicio (`PedidoServiceImplTest`)**: Pruebas con Mockito para aislar la lógica de negocio, validando las reglas de validación y el manejo adecuado de la excepción personalizada `PedidoException`.
+3. **Pruebas de Controladores e Integración Web (`PedidoReporteControllerIntegrationTest` y `PedidoSecurityIntegrationTest`)**: Comprobación de contratos REST, serialización JSON y restricciones de acceso según los roles asignados (`CONSULTA`, `OPERADOR`) bajo el entorno de seguridad de Spring Security.
+
+### Agregando Rutas y contratos HTTP
+
+Los contratos de comunicación expuestos por el sistema siguen las especificaciones descritas a continuación:
+
+| Método | Ruta relativa | Controlador / función | Respuesta habitual |
+|---|---|---|---|
+| GET | `/api/v1/pedidos/busqueda-avanzada?cliente=Ana&totalMinimo=200` | `PedidoReporteController` **[PA3]** | **RMM 1:** (`200 OK`) un arreglo JSON con los registros coincidentes ordenados de forma descendente por identificador. |
+| GET | `/api/v1/pedidos/clientes-frecuentes?minPedidos=2` | `PedidoReporteController` **[PA3]** | **RMM 1:** (`200 OK`) un arreglo JSON mapeado mediante proyecciones de Java Records que incluye nombre del cliente, total de pedidos, unidades acumuladas, importe total y ticket promedio. |
+
+---

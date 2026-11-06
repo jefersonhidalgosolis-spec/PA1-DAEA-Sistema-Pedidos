@@ -1,9 +1,11 @@
 package com.isil.edu.pe.spedidos.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.isil.edu.pe.spedidos.entity.Pedido;
+import com.isil.edu.pe.spedidos.repository.projection.ClienteFrecuenteProjection;
 import com.isil.edu.pe.spedidos.repository.projection.ProductoVendidoProjection;
 import com.isil.edu.pe.spedidos.repository.projection.ResumenPedidosProjection;
 import java.math.BigDecimal;
@@ -90,6 +92,47 @@ class PedidoReporteJdbcRepositoryTest {
     assertEquals(5L, productos.get(0).totalUnidades());
     assertEquals("LAP-001", productos.get(1).productoCodigo());
   }
+
+  @Test
+  @DisplayName("Return orders matching customer and minimum total from PedidoReporteJdbcRepository")
+  void returnOrdersMatchingCustomerAndMinimumTotalFromPedidoReporteJdbcRepository() {
+    // Arrange
+    String cliente = "Ana Torres";
+    BigDecimal totalMinimo = new BigDecimal("200.00");
+
+    // Act
+    List<Pedido> resultados = repository.buscarPedidosPorClienteYTotalMinimo(cliente, totalMinimo);
+
+    // Assert
+    assertNotNull(resultados);
+    assertEquals(1, resultados.size());
+    assertEquals("Ana Torres", resultados.get(0).getCliente());
+    assertEquals(new BigDecimal("5000.00"), resultados.get(0).getTotal());
+  }
+
+  @Test
+  @DisplayName("Return customer summaries with minimum number of orders from PedidoReporteJdbcRepository")
+  void returnCustomerSummariesWithMinimumOrdersFromPedidoReporteJdbcRepository() {
+    // Arrange: Ana Torres tiene 2 pedidos y Carlos Perez tiene 1 pedido.
+    int minPedidos = 2;
+
+    // Act
+    List<ClienteFrecuenteProjection> resultados = repository.listarClientesFrecuentes(minPedidos);
+
+    // Assert
+    assertNotNull(resultados);
+    assertEquals(1, resultados.size());
+
+    assertEquals("Ana Torres", resultados.get(0).cliente());
+    assertEquals(2L, resultados.get(0).totalPedidos());
+    assertEquals(4L, resultados.get(0).totalUnidades());
+    assertEquals(new BigDecimal("5100.00"), resultados.get(0).importeAcumulado());
+    assertEquals(0, new BigDecimal("2550.00").compareTo(resultados.get(0).ticketPromedio()));
+  
+  }
+
+
+
 
   private void insertarPedido(
       String cliente,

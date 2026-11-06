@@ -15,7 +15,9 @@ import com.isil.edu.pe.spedidos.client.InventarioNoDisponibleException;
 import com.isil.edu.pe.spedidos.client.dto.ReservaStockResponse;
 import com.isil.edu.pe.spedidos.entity.Pedido;
 import com.isil.edu.pe.spedidos.exception.PedidoException;
-import com.isil.edu.pe.spedidos.repository.PedidoRepository;
+import com.isil.edu.pe.spedidos.repository.PedidoReporteJdbcRepository;
+import com.isil.edu.pe.spedidos.repository.PedidoRepository; 
+
 import java.math.BigDecimal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,6 +40,8 @@ class PedidoServiceImplTest {
   private PedidoRepository pedidoRepository;
   private InventarioClient inventarioClient;
   private PedidoServiceImpl pedidoService;
+  private PedidoReporteJdbcRepository pedidoReporteJdbcRepository; 
+  private PedidoReporteServiceImpl pedidoReporteService; 
 
   /**
    * Crea mocks de las dependencias y construye manualmente el servicio antes
@@ -51,6 +55,12 @@ class PedidoServiceImplTest {
     pedidoService = new PedidoServiceImpl(
         pedidoRepository,
         inventarioClient
+    );
+
+    pedidoReporteJdbcRepository = mock(PedidoReporteJdbcRepository.class);
+    
+    pedidoReporteService = new PedidoReporteServiceImpl(
+        pedidoReporteJdbcRepository
     );
   }
 
@@ -148,6 +158,42 @@ class PedidoServiceImplTest {
     assertSame(causa, error.getCause());
     verifyNoInteractions(pedidoRepository);
   }
+
+  @Test
+  void debeLanzarErrorCuandoClienteEsVacio() {
+    // Arrange & Act & Assert
+    PedidoException error = assertThrows(
+        PedidoException.class, 
+        () ->  pedidoReporteService.buscarPedidosAvanzada("", new BigDecimal("10.00")) 
+    );
+        
+    assertEquals("El nombre del cliente no puede estar vacío.", error.getMessage());
+    verifyNoInteractions(pedidoReporteJdbcRepository);   
+  }
+
+  @Test
+  void debeLanzarErrorCuandoTotalMinimoEsNegativo() {
+    // Arrange & Act & Assert
+    PedidoException error = assertThrows(
+        PedidoException.class, 
+        () ->  pedidoReporteService.buscarPedidosAvanzada("Juan", new BigDecimal("-5.00")) 
+    );
+
+    assertEquals("El total mínimo no puede ser negativo.", error.getMessage());
+    verifyNoInteractions(pedidoReporteJdbcRepository); 
+  }  
+
+  @Test
+  void debeLanzarErrorCuandoMinPedidosEsMenorA1() {
+    // Arrange & Act & Assert
+    PedidoException error = assertThrows(
+        PedidoException.class, 
+        () ->  pedidoReporteService.listarClientesFrecuentes(0) 
+    );
+    assertEquals("El mínimo de pedidos debe ser al menos 1.", error.getMessage());
+    verifyNoInteractions(pedidoReporteJdbcRepository);      
+  }
+
 
   private ReservaStockResponse nuevaReserva(
       String codigo,

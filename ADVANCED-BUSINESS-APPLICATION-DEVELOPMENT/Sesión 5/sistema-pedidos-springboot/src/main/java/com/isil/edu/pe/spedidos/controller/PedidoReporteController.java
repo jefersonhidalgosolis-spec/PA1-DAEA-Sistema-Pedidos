@@ -5,7 +5,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import com.isil.edu.pe.spedidos.controller.dto.PedidoResponse;
 import com.isil.edu.pe.spedidos.controller.dto.ProductoVendidoDto;
 import com.isil.edu.pe.spedidos.controller.dto.ResumenPedidosDto;
+import com.isil.edu.pe.spedidos.entity.Pedido;
+import com.isil.edu.pe.spedidos.repository.projection.ClienteFrecuenteProjection;
 import com.isil.edu.pe.spedidos.service.PedidoReporteService;
+
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
@@ -73,6 +77,18 @@ public class PedidoReporteController {
     );
     return ResponseEntity.ok(coleccion);
   }
+
+  @GetMapping(value = "/busqueda-avanzada", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<Pedido>> buscarAvanzada(@RequestParam String cliente, @RequestParam BigDecimal totalMinimo) {
+      List<Pedido> resultado = reporteService.buscarPedidosAvanzada(cliente, totalMinimo);
+      return ResponseEntity.ok(resultado);
+    }
+
+  @GetMapping(value = "/clientes-frecuentes", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<ClienteFrecuenteProjection>> clientesFrecuentes(@RequestParam int minPedidos) {
+      List<ClienteFrecuenteProjection> resultado = reporteService.listarClientesFrecuentes(minPedidos);
+      return ResponseEntity.ok(resultado);
+  }  
 
   private Link linkPedidos() {
     return Link.of(linkTo(PedidoReporteController.class).toUri() + "{?cliente}");
