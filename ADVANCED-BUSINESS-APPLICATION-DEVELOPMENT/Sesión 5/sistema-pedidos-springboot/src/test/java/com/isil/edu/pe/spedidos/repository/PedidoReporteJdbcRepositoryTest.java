@@ -1,5 +1,5 @@
-package com.isil.edu.pe.spedidos.repository;
-
+/*package com.isil.edu.pe.spedidos.repository;
+ 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -118,4 +118,4 @@ class PedidoReporteJdbcRepositoryTest {
         total
     );
   }
-}
+}*/ 

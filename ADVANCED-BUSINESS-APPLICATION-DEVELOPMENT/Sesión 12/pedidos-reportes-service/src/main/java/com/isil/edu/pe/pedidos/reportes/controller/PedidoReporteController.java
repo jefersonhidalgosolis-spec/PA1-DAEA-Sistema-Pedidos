@@ -2,14 +2,13 @@ package com.isil.edu.pe.pedidos.reportes.controller;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
+import com.isil.edu.pe.pedidos.reportes.controller.dto.EstadisticasRevisionResponse;
 import com.isil.edu.pe.pedidos.reportes.controller.dto.PedidoResponse;
+import com.isil.edu.pe.pedidos.reportes.controller.dto.PedidoRevisionResponse;
 import com.isil.edu.pe.pedidos.reportes.controller.dto.ProductoVendidoDto;
 import com.isil.edu.pe.pedidos.reportes.controller.dto.ResumenPedidosDto;
 import com.isil.edu.pe.pedidos.reportes.service.PedidoReporteService;
-import java.util.List;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.MediaTypes;
+import java.util.List; 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,6 +69,29 @@ public class PedidoReporteController {
         .stream()
         .map(ProductoVendidoDto::from)
         .toList();
+  }
+
+  /**
+   * [PA4] Lista pedidos filtrados por estado de revisión (PENDIENTE o REVISADO).
+   */
+  @GetMapping(value = "/revisiones", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<List<PedidoRevisionResponse>> listarPorEstadoRevision(
+      @RequestParam String estado) {
+    List<PedidoRevisionResponse> resultado = reporteService.listarPorEstadoRevision(estado)
+        .stream()
+        .map(PedidoRevisionResponse::from)
+        .toList();
+    return ResponseEntity.ok(resultado);
+  }
+
+  /**
+   * [PA4] Devuelve estadísticas consolidadas del estado de revisión de pedidos.
+   */
+  @GetMapping(value = "/estadisticas/revisiones", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<EstadisticasRevisionResponse> obtenerEstadisticasRevision() {
+    return ResponseEntity.ok(
+        EstadisticasRevisionResponse.from(reporteService.obtenerEstadisticasRevision())
+    );
   }
 
 }

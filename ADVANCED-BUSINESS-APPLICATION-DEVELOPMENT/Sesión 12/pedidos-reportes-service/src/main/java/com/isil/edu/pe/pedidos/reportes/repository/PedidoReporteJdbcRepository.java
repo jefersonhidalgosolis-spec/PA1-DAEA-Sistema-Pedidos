@@ -1,17 +1,21 @@
 package com.isil.edu.pe.pedidos.reportes.repository;
-
+   
 import com.isil.edu.pe.pedidos.reportes.repository.mapper.PedidoRowMapper;
+import com.isil.edu.pe.pedidos.reportes.repository.projection.EstadisticasRevisionProjection;
+import com.isil.edu.pe.pedidos.reportes.repository.projection.PedidoRevisionEstadoProjection; 
 import com.isil.edu.pe.pedidos.reportes.repository.projection.ProductoVendidoProjection;
 import com.isil.edu.pe.pedidos.reportes.repository.projection.ResumenPedidosProjection;
 import com.isil.edu.pe.pedidos.reportes.service.domain.Pedido;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.math.RoundingMode; 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-
+ 
 /**
  * Repositorio de consultas y reportes implementado
  * mediante Spring JDBC.
@@ -163,6 +167,77 @@ public class PedidoReporteJdbcRepository {
     );
   }
 
+ /**
+   * [PA4] Lista pedidos filtrados por estado de revisión (true = REVISADO, false = PENDIENTE).
+   */
+  public List<PedidoRevisionEstadoProjection> listarPorEstadoRevision(boolean revisado) {
+    String sql = """
+        SELECT
+            p.id AS pedido_id,
+            p.cliente,
+            p.producto_codigo,
+            p.producto_nombre,
+            p.total,
+            p.revisado,
+            r.observacion,
+            r.fecha_revision
+        FROM pedido p
+        LEFT JOIN pedido_revision r ON r.pedido_id = p.id
+        WHERE p.revisado = :revisado
+        ORDER BY p.id DESC
+        """;
+
+    return namedParameterJdbcTemplate.query(
+        sql,
+        Map.of("revisado", revisado),
+        (rs, rowNum) -> {
+          Timestamp ts = rs.getTimestamp("fecha_revision");
+          return new PedidoRevisionEstadoProjection(
+              rs.getLong("pedido_id"),
+              rs.getString("cliente"),
+              rs.getString("producto_codigo"),
+              rs.getString("producto_nombre"),
+              valorMonetario(rs.getBigDecimal("total")),
+              rs.getBoolean("revisado"),
+              rs.getString("observacion"),
+              ts != null ? ts.toLocalDateTime() : null
+          );
+        }
+    );
+  }
+
+  /**
+   * [PA4] Calcula estadísticas globales de pedidos revisados y pendientes.
+   */
+  public EstadisticasRevisionProjection obtenerEstadisticasRevision() {
+    String sql = """
+        SELECT
+            COUNT(*) AS total_pedidos,
+            COALESCE(SUM(CASE WHEN revisado = TRUE THEN 1 ELSE 0 END), 0) AS total_revisados,
+            COALESCE(SUM(CASE WHEN revisado = FALSE THEN 1 ELSE 0 END), 0) AS total_pendientes
+        FROM pedido
+        """;
+
+    return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
+      long totalPedidos = rs.getLong("total_pedidos");
+      long totalRevisados = rs.getLong("total_revisados");
+      long totalPendientes = rs.getLong("total_pendientes");
+      BigDecimal porcentaje = totalPedidos == 0
+          ? BigDecimal.ZERO
+          : BigDecimal.valueOf(totalRevisados)
+              .multiply(BigDecimal.valueOf(100))
+              .divide(BigDecimal.valueOf(totalPedidos), 2, RoundingMode.HALF_UP);
+
+      return new EstadisticasRevisionProjection(
+          totalPedidos,
+          totalRevisados,
+          totalPendientes,
+          porcentaje
+      );
+    });
+  }
+  
+  
   private BigDecimal valorMonetario(
       BigDecimal valor) {
 
@@ -171,3 +246,4 @@ public class PedidoReporteJdbcRepository {
         : BigDecimal.ZERO;
   }
 }
+  

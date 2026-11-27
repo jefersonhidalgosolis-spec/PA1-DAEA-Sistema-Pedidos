@@ -114,6 +114,11 @@
                 <span aria-hidden="true">▦</span>
                 Ver reporte de pedidos
             </a>
+            <c:url var="supervisionPedidosUrl" value="/supervision/pedidos"/>
+            <a href="${supervisionPedidosUrl}" class="boton-link boton-link-primario">
+                <span aria-hidden="true">▦</span>
+                Ver supervision de pedidos
+            </a>
         </div>
 
         <div class="tabla-scroll">

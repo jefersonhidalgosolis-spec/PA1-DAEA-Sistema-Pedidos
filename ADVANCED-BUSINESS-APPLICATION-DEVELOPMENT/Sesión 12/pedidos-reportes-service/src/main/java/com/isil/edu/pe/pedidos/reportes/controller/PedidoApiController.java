@@ -6,7 +6,11 @@ import com.isil.edu.pe.pedidos.reportes.service.domain.Pedido;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ProblemDetail;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,4 +55,12 @@ public class PedidoApiController {
 
     return resumen;
   }
+
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ProblemDetail parametroInvalido(IllegalArgumentException e) {
+    ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+    problem.setTitle("Parámetro inválido");
+    return problem;
+  }
+
 }

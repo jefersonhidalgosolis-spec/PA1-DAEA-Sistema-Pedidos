@@ -13,3 +13,4 @@ public record ProductoVendidoProjection(
     BigDecimal importeAcumulado
 ) {
 }
+ 

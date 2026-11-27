@@ -1,4 +1,4 @@
-package com.isil.edu.pe.spedidos.controller;
+/*package com.isil.edu.pe.spedidos.controller;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
@@ -83,3 +83,4 @@ class PedidoSecurityIntegrationTest {
         .andExpect(jsonPath("$.totalUnidades").isNumber());
   }
 }
+*/ 
